@@ -1,0 +1,40 @@
+GET http://localhost:5000/bills
+
+###
+GET http://localhost:5000/categories
+
+###
+GET http://localhost:5000/debts
+
+###
+GET http://localhost:5000/products
+
+###
+GET http://localhost:5000/stores
+
+###
+POST http://localhost:5000/stores
+Content-Type: application/json
+
+{
+    "name": "Shyam Store",
+    "address": "Fatehpur, Haldwani",
+    "phoneNo": 123426456,
+    "email": "shayam@vatika.com",
+    "logo": "https://idreamleaguesoccerkits.com/wp-content/uploads/2020/12/India-DLS-Logo-URL-300x300.png",
+    "gstIn": "NM324sf54"
+}
+
+###
+GET http://localhost:5000/users
+
+
+###
+POST http://localhost:5000/categories
+Content-Type: application/json
+
+{
+    "name": "Sports",
+    "stores":"63a4921d3607a305f0c64571"
+}
+

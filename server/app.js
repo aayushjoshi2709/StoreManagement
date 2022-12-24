@@ -1,0 +1,38 @@
+const express = require('express')
+const app = express()
+const bp = require('body-parser')
+const dotenv = require('dotenv')
+const mongoose = require('mongoose')
+const cors = require('cors')
+dotenv.config()
+app.use(bp.json())
+app.use(cors())
+app.use(bp.urlencoded({extended:true}))
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.DBURL, function(err){
+    if(err)
+        console.log("Error connecting to the database")
+})
+const userModel = require('./Models/Users')
+const storesModel = require('./Models/Stores')
+const categoriesModel = require('./Models/Categories')
+const productsModel = require('./Models/Products')
+const debtsModel = require('./Models/Debts')
+const billsModel = require('./Models/Bills')
+
+const bills = require('./Routes/Bills')
+const categories = require('./Routes/Categories')
+const debts = require('./Routes/Debts')
+const products = require('./Routes/Products')
+const stores = require('./Routes/Stores')
+const users = require('./Routes/Users')
+app.use('/stores', stores)
+app.use('/categories', categories)
+app.use('/products', products)
+app.use('/users', users)
+app.use('/bills', bills)
+app.use('/debts', debts)
+
+app.listen(process.env.PORT,function(){
+    console.log(`app running on port ${process.env.PORT}`);
+})
